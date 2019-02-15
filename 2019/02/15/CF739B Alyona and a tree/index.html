@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CF739B Alyona and a tree题目大意：问子树中每个节点所能控制的儿子节点树。控制：当且仅当 u 在 v 的子树中并且 dist(v,u)≤a[u]，a[u]为u节点的点权，a数组从根节点往下递减 。思路：倍增，对于每个节点u往上倍增，找到最远能控制它的节点v，因为a数组是满足单调的，所以u到v的路径都能被控制，所以树上差分一下，差分时稍微调整一下即可。代码如下：12345678">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/02/15/CF739B Alyona and a tree/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="CF739B Alyona and a tree题目大意：问子树中每个节点所能控制的儿子节点树。控制：当且仅当 u 在 v 的子树中并且 dist(v,u)≤a[u]，a[u]为u节点的点权，a数组从根节点往下递减 。思路：倍增，对于每个节点u往上倍增，找到最远能控制它的节点v，因为a数组是满足单调的，所以u到v的路径都能被控制，所以树上差分一下，差分时稍微调整一下即可。代码如下：12345678">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-15T10:47:15.314Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="CF739B Alyona and a tree题目大意：问子树中每个节点所能控制的儿子节点树。控制：当且仅当 u 在 v 的子树中并且 dist(v,u)≤a[u]，a[u]为u节点的点权，a数组从根节点往下递减 。思路：倍增，对于每个节点u往上倍增，找到最远能控制它的节点v，因为a数组是满足单调的，所以u到v的路径都能被控制，所以树上差分一下，差分时稍微调整一下即可。代码如下：12345678">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CF739B Alyona and a tree" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/15/CF739B Alyona and a tree/" class="article-date">
+  <time datetime="2019-02-15T10:47:15.159Z" itemprop="datePublished">2019-02-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CF739B-Alyona-and-a-tree"><a href="#CF739B-Alyona-and-a-tree" class="headerlink" title="CF739B Alyona and a tree"></a>CF739B Alyona and a tree</h1><h4 id="题目大意：问子树中每个节点所能控制的儿子节点树。控制：当且仅当-u-在-v-的子树中并且-dist-v-u-≤a-u-，a-u-为u节点的点权，a数组从根节点往下递减-。"><a href="#题目大意：问子树中每个节点所能控制的儿子节点树。控制：当且仅当-u-在-v-的子树中并且-dist-v-u-≤a-u-，a-u-为u节点的点权，a数组从根节点往下递减-。" class="headerlink" title="题目大意：问子树中每个节点所能控制的儿子节点树。控制：当且仅当 u 在 v 的子树中并且 dist(v,u)≤a[u]，a[u]为u节点的点权，a数组从根节点往下递减 。"></a>题目大意：问子树中每个节点所能控制的儿子节点树。控制：当且仅当 u 在 v 的子树中并且 dist(v,u)≤a[u]，a[u]为u节点的点权，a数组从根节点往下递减 。</h4><h4 id="思路：倍增，对于每个节点u往上倍增，找到最远能控制它的节点v，因为a数组是满足单调的，所以u到v的路径都能被控制，所以树上差分一下，差分时稍微调整一下即可。"><a href="#思路：倍增，对于每个节点u往上倍增，找到最远能控制它的节点v，因为a数组是满足单调的，所以u到v的路径都能被控制，所以树上差分一下，差分时稍微调整一下即可。" class="headerlink" title="思路：倍增，对于每个节点u往上倍增，找到最远能控制它的节点v，因为a数组是满足单调的，所以u到v的路径都能被控制，所以树上差分一下，差分时稍微调整一下即可。"></a>思路：倍增，对于每个节点u往上倍增，找到最远能控制它的节点v，因为a数组是满足单调的，所以u到v的路径都能被控制，所以树上差分一下，差分时稍微调整一下即可。</h4><h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN=<span class="number">400000</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,root,a[MaxN];</span><br><span class="line"><span class="keyword">int</span> f[MaxN][<span class="number">30</span>];</span><br><span class="line"><span class="keyword">int</span> last[MaxN],tot,du[MaxN];</span><br><span class="line"><span class="keyword">int</span> zhi[MaxN],las;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sum[MaxN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;e[MaxN*<span class="number">4</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">	e[++tot].to=y;</span><br><span class="line">	e[tot].next=last[x];</span><br><span class="line">	e[tot].w=w;</span><br><span class="line">	last[x]=tot;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	f[x][<span class="number">0</span>]=fa;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=last[x];i;i=e[i].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> u=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(u==fa) <span class="keyword">continue</span>;</span><br><span class="line">		sum[u]=sum[x]+e[i].w;</span><br><span class="line">		dfs(u,x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dp</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">20</span>;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j) f[j][i]=f[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> y=x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;--i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(f[y][i]&amp;&amp;sum[x]-sum[f[y][i]]&lt;=a[x])&#123;</span><br><span class="line">			y=f[y][i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">chec</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=last[x];i;i=e[i].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> u=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(u==fa) <span class="keyword">continue</span>;</span><br><span class="line">		chec(u,x);</span><br><span class="line">		zhi[x]+=zhi[u];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> w,y;root=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;y,&amp;w);</span><br><span class="line">		add_edge(y,i,w);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(root,<span class="number">0</span>);dp();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) zhi[f[i][<span class="number">0</span>]]++,zhi[f[lca(i)][<span class="number">0</span>]]--;</span><br><span class="line">	chec(root,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">printf</span>(<span class="string">"%d "</span>,zhi[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">​```</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/15/CF739B Alyona and a tree/" data-id="cjs5xry3k0001xsubm8mozhhj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/15/P2680 运输计划/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/15/CF739B Alyona and a tree/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/15/P2680 运输计划/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/14/[IOI2008]Island/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA10369 Arctic Network/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA6437 Power Plant/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="P2680 运输计划题目大意：给定一棵n个节点的树，树上有边权，m辆飞机有m条路径，从u飞向v，我们能让其中一条边变为0。每个飞机同时出发，问所以飞机都到达目的的最少时间。思路：对于每个节点我们算出他到根节点的距离（类似前缀和），然后算出m条路径的长度分别是什么，可以用LCA算出：dep[x]+dep[y]-2*dep[lca(x,y)]。然后我们二分飞机到达目的地的时间，记录有多少条无法到达的路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/02/15/P2680 运输计划/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="P2680 运输计划题目大意：给定一棵n个节点的树，树上有边权，m辆飞机有m条路径，从u飞向v，我们能让其中一条边变为0。每个飞机同时出发，问所以飞机都到达目的的最少时间。思路：对于每个节点我们算出他到根节点的距离（类似前缀和），然后算出m条路径的长度分别是什么，可以用LCA算出：dep[x]+dep[y]-2*dep[lca(x,y)]。然后我们二分飞机到达目的地的时间，记录有多少条无法到达的路">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-15T10:37:24.157Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="P2680 运输计划题目大意：给定一棵n个节点的树，树上有边权，m辆飞机有m条路径，从u飞向v，我们能让其中一条边变为0。每个飞机同时出发，问所以飞机都到达目的的最少时间。思路：对于每个节点我们算出他到根节点的距离（类似前缀和），然后算出m条路径的长度分别是什么，可以用LCA算出：dep[x]+dep[y]-2*dep[lca(x,y)]。然后我们二分飞机到达目的地的时间，记录有多少条无法到达的路">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-P2680 运输计划" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/15/P2680 运输计划/" class="article-date">
+  <time datetime="2019-02-15T10:37:24.009Z" itemprop="datePublished">2019-02-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="P2680-运输计划"><a href="#P2680-运输计划" class="headerlink" title="P2680 运输计划"></a>P2680 运输计划</h1><h4 id="题目大意：给定一棵n个节点的树，树上有边权，m辆飞机有m条路径，从u飞向v，我们能让其中一条边变为0。每个飞机同时出发，问所以飞机都到达目的的最少时间。"><a href="#题目大意：给定一棵n个节点的树，树上有边权，m辆飞机有m条路径，从u飞向v，我们能让其中一条边变为0。每个飞机同时出发，问所以飞机都到达目的的最少时间。" class="headerlink" title="题目大意：给定一棵n个节点的树，树上有边权，m辆飞机有m条路径，从u飞向v，我们能让其中一条边变为0。每个飞机同时出发，问所以飞机都到达目的的最少时间。"></a>题目大意：给定一棵n个节点的树，树上有边权，m辆飞机有m条路径，从u飞向v，我们能让其中一条边变为0。每个飞机同时出发，问所以飞机都到达目的的最少时间。</h4><h4 id="思路：对于每个节点我们算出他到根节点的距离（类似前缀和），然后算出m条路径的长度分别是什么，可以用LCA算出：dep-x-dep-y-2-dep-lca-x-y-。然后我们二分飞机到达目的地的时间，记录有多少条无法到达的路径cnt，最后树上差分一下，看一下哪几条边被遍历了cnt次，取个最大的边，看看把它变成0能不能符合答案即可。"><a href="#思路：对于每个节点我们算出他到根节点的距离（类似前缀和），然后算出m条路径的长度分别是什么，可以用LCA算出：dep-x-dep-y-2-dep-lca-x-y-。然后我们二分飞机到达目的地的时间，记录有多少条无法到达的路径cnt，最后树上差分一下，看一下哪几条边被遍历了cnt次，取个最大的边，看看把它变成0能不能符合答案即可。" class="headerlink" title="思路：对于每个节点我们算出他到根节点的距离（类似前缀和），然后算出m条路径的长度分别是什么，可以用LCA算出：dep[x]+dep[y]-2*dep[lca(x,y)]。然后我们二分飞机到达目的地的时间，记录有多少条无法到达的路径cnt，最后树上差分一下，看一下哪几条边被遍历了cnt次，取个最大的边，看看把它变成0能不能符合答案即可。"></a>思路：对于每个节点我们算出他到根节点的距离（类似前缀和），然后算出m条路径的长度分别是什么，可以用LCA算出：dep[x]+dep[y]-2*dep[lca(x,y)]。然后我们二分飞机到达目的地的时间，记录有多少条无法到达的路径cnt，最后树上差分一下，看一下哪几条边被遍历了cnt次，取个最大的边，看看把它变成0能不能符合答案即可。</h4><h4 id="注意：这题LCA要用树剖，但我不会，所以用倍增（加个快读就过了？）。"><a href="#注意：这题LCA要用树剖，但我不会，所以用倍增（加个快读就过了？）。" class="headerlink" title="注意：这题LCA要用树剖，但我不会，所以用倍增（加个快读就过了？）。"></a>注意：这题LCA要用树剖，但我不会，所以用倍增（加个快读就过了？）。</h4><h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN=<span class="number">400000</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,root,l,r;</span><br><span class="line"><span class="keyword">int</span> f[MaxN][<span class="number">30</span>],dis[MaxN],sum[MaxN];</span><br><span class="line"><span class="keyword">int</span> last[MaxN],tot,du[MaxN],ddis[MaxN];</span><br><span class="line"><span class="keyword">int</span> zhi[MaxN],las;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,w;</span><br><span class="line">&#125;e[MaxN*<span class="number">4</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">che</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y,w,lca;</span><br><span class="line">&#125;tr[MaxN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> s=<span class="number">0</span>,w=<span class="number">1</span>;</span><br><span class="line">   <span class="keyword">char</span> ch=getchar();</span><br><span class="line">   <span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)&#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) w=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">   <span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>) s=s*<span class="number">10</span>+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">   <span class="keyword">return</span> s*w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">	e[++tot].to=y;</span><br><span class="line">	e[tot].next=last[x];</span><br><span class="line">	e[tot].w=w;</span><br><span class="line">	last[x]=tot;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	f[x][<span class="number">0</span>]=fa;ddis[x]=ddis[fa]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=last[x];i;i=e[i].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> u=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(u==fa) <span class="keyword">continue</span>;</span><br><span class="line">		dis[u]=dis[x]+e[i].w;</span><br><span class="line">		dfs(u,x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dp</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">20</span>;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j) f[j][i]=f[f[j][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(ddis[x]&lt;ddis[y]) swap(x,y);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,d=ddis[x]-ddis[y];d;d&gt;&gt;=<span class="number">1</span>,++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(d&amp;<span class="number">1</span>) x=f[x][i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x==y) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">20</span>;i&gt;=<span class="number">0</span>;--i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(f[x][i]!=f[y][i])&#123;</span><br><span class="line">			x=f[x][i];y=f[y][i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> f[x][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=last[x];i;i=e[i].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> u=e[i].to;</span><br><span class="line">		<span class="keyword">if</span>(u!=f[x][<span class="number">0</span>]) work(u),sum[x]+=sum[u];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> ans)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>,lon=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) sum[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(tr[i].w&gt;ans)&#123;</span><br><span class="line">			++cnt;</span><br><span class="line">			sum[tr[i].x]++;sum[tr[i].y]++;</span><br><span class="line">			sum[tr[i].lca]-=<span class="number">2</span>;</span><br><span class="line">			lon=max(lon,tr[i].w-ans);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	work(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(sum[i]==cnt&amp;&amp;dis[i]-dis[f[i][<span class="number">0</span>]]&gt;=lon) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,w;</span><br><span class="line">	n=read();m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</span><br><span class="line">		x=read();y=read();w=read();</span><br><span class="line">		add_edge(x,y,w);add_edge(y,x,w);</span><br><span class="line">		r+=w;</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(<span class="number">1</span>,<span class="number">0</span>);dp();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		tr[i].x=read();tr[i].y=read();</span><br><span class="line">		tr[i].lca=lca(tr[i].x,tr[i].y);</span><br><span class="line">		tr[i].w=dis[tr[i].x]+dis[tr[i].y]<span class="number">-2</span>*dis[tr[i].lca];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(check(mid)) r=mid;</span><br><span class="line">		<span class="keyword">else</span> l=mid+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,l);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/15/P2680 运输计划/" data-id="cjs5xry3s0005xsubxasmpm43" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/15/CF739B Alyona and a tree/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/14/[IOI2008]Island/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/15/CF739B Alyona and a tree/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/15/P2680 运输计划/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/14/[IOI2008]Island/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA10369 Arctic Network/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA6437 Power Plant/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
