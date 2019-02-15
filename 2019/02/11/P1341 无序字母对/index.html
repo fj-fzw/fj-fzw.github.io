@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="无序字母对题目大意：给定n个字母对（一个字母对有2个字母，位置可以颠倒），请构造一个有n+1个字母的字符串使得每个字母对都在字符串串中出现过。标签：欧拉回路、欧拉路思路：首先要先判断构不构成欧拉路：欧拉路径存在有两点：1、图联通，这个用并查集判断 2、有且只有两个奇点（与其相连的边只有奇数个）：欧拉路 或 没有奇点：欧拉回路。记录奇点的编号，如果没有的话就记字典序最小的存在的编号，这个编号是类似h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/02/11/P1341 无序字母对/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="无序字母对题目大意：给定n个字母对（一个字母对有2个字母，位置可以颠倒），请构造一个有n+1个字母的字符串使得每个字母对都在字符串串中出现过。标签：欧拉回路、欧拉路思路：首先要先判断构不构成欧拉路：欧拉路径存在有两点：1、图联通，这个用并查集判断 2、有且只有两个奇点（与其相连的边只有奇数个）：欧拉路 或 没有奇点：欧拉回路。记录奇点的编号，如果没有的话就记字典序最小的存在的编号，这个编号是类似h">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-11T11:42:32.044Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="无序字母对题目大意：给定n个字母对（一个字母对有2个字母，位置可以颠倒），请构造一个有n+1个字母的字符串使得每个字母对都在字符串串中出现过。标签：欧拉回路、欧拉路思路：首先要先判断构不构成欧拉路：欧拉路径存在有两点：1、图联通，这个用并查集判断 2、有且只有两个奇点（与其相连的边只有奇数个）：欧拉路 或 没有奇点：欧拉回路。记录奇点的编号，如果没有的话就记字典序最小的存在的编号，这个编号是类似h">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-P1341 无序字母对" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/11/P1341 无序字母对/" class="article-date">
+  <time datetime="2019-02-11T11:42:31.888Z" itemprop="datePublished">2019-02-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="无序字母对"><a href="#无序字母对" class="headerlink" title="无序字母对"></a>无序字母对</h1><h4 id="题目大意：给定n个字母对（一个字母对有2个字母，位置可以颠倒），请构造一个有n-1个字母的字符串使得每个字母对都在字符串串中出现过。"><a href="#题目大意：给定n个字母对（一个字母对有2个字母，位置可以颠倒），请构造一个有n-1个字母的字符串使得每个字母对都在字符串串中出现过。" class="headerlink" title="题目大意：给定n个字母对（一个字母对有2个字母，位置可以颠倒），请构造一个有n+1个字母的字符串使得每个字母对都在字符串串中出现过。"></a>题目大意：给定n个字母对（一个字母对有2个字母，位置可以颠倒），请构造一个有n+1个字母的字符串使得每个字母对都在字符串串中出现过。</h4><h6 id="标签：欧拉回路、欧拉路"><a href="#标签：欧拉回路、欧拉路" class="headerlink" title="标签：欧拉回路、欧拉路"></a>标签：欧拉回路、欧拉路</h6><h5 id="思路：首先要先判断构不构成欧拉路：欧拉路径存在有两点：1、图联通，这个用并查集判断-2、有且只有两个奇点（与其相连的边只有奇数个）：欧拉路-或-没有奇点：欧拉回路。记录奇点的编号，如果没有的话就记字典序最小的存在的编号，这个编号是类似hash一样的东西，象征一个字母。最后跑一遍欧拉回路即可。"><a href="#思路：首先要先判断构不构成欧拉路：欧拉路径存在有两点：1、图联通，这个用并查集判断-2、有且只有两个奇点（与其相连的边只有奇数个）：欧拉路-或-没有奇点：欧拉回路。记录奇点的编号，如果没有的话就记字典序最小的存在的编号，这个编号是类似hash一样的东西，象征一个字母。最后跑一遍欧拉回路即可。" class="headerlink" title="思路：首先要先判断构不构成欧拉路：欧拉路径存在有两点：1、图联通，这个用并查集判断 2、有且只有两个奇点（与其相连的边只有奇数个）：欧拉路 或 没有奇点：欧拉回路。记录奇点的编号，如果没有的话就记字典序最小的存在的编号，这个编号是类似hash一样的东西，象征一个字母。最后跑一遍欧拉回路即可。"></a>思路：首先要先判断构不构成欧拉路：欧拉路径存在有两点：1、图联通，这个用并查集判断 2、有且只有两个奇点（与其相连的边只有奇数个）：欧拉路 或 没有奇点：欧拉回路。记录奇点的编号，如果没有的话就记字典序最小的存在的编号，这个编号是类似hash一样的东西，象征一个字母。最后跑一遍欧拉回路即可。</h5><h5 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Z=<span class="number">200</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">4000</span>][<span class="number">4000</span>];</span><br><span class="line"><span class="keyword">int</span> sta[<span class="number">4000</span>],tot;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">4000</span>],pd,ppd;</span><br><span class="line"><span class="keyword">int</span> d[<span class="number">4000</span>],beg;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> fir,las;</span><br><span class="line">&#125;e[<span class="number">400000</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Z;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[x][i]) a[x][i]=a[i][x]=<span class="number">0</span>,dfs(i);</span><br><span class="line">	&#125;</span><br><span class="line">	sta[++tot]=x;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getf</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[x]==x) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">return</span> f[x]=getf(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> c,ch;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Z;++i) f[i]=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;c&gt;&gt;ch;</span><br><span class="line">		e[i].fir=c<span class="number">-0</span>;e[i].las=ch<span class="number">-0</span>;</span><br><span class="line">		a[e[i].fir][e[i].las]=a[e[i].las][e[i].fir]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> fx=getf(e[i].fir),fy=getf(e[i].las);</span><br><span class="line">		f[fx]=fy;d[e[i].fir]++;d[e[i].las]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Z;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(f[i]==i&amp;&amp;d[i]) ++pd;</span><br><span class="line">		<span class="keyword">if</span>(d[i]%<span class="number">2</span>)&#123;</span><br><span class="line">			++ppd;</span><br><span class="line">			<span class="keyword">if</span>(!beg) beg=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(pd!=<span class="number">1</span>||(ppd!=<span class="number">2</span>&amp;&amp;ppd))&#123;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">"No Solution"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!beg) <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Z;++i) <span class="keyword">if</span>(d[i])&#123;beg=i;<span class="keyword">break</span>;&#125;</span><br><span class="line">	dfs(beg);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=tot;i&gt;<span class="number">0</span>;--i) <span class="built_in">printf</span>(<span class="string">"%c"</span>,sta[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/11/P1341 无序字母对/" data-id="cjs5wlbg20001dkubmy0826ip" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/11/P2016 战略游戏/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/09/P2346 四子连棋/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/14/[IOI2008]Island/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA10369 Arctic Network/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA6437 Power Plant/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/BZOJ3033 太鼓达人/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA1151 Buy or Build/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

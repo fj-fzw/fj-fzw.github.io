@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UVA6437 Power Plant题目大意：T组数据，给定一幅带权图(n;m), 然后给定k个点, 与图中存在有若干条边。每个点都要至少要和这k个点的一个点直接或间接相连, 问最少的距离是多少。标签：最小生成树思路：我们将那k个点就行缩点处理, 即把这k个点缩成一个点的编号, 跑一遍最小生成树即可。这样UVA的**输出方式。代码如下：123456789101112131415161718192">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/02/12/UVA6437 Power Plant/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="UVA6437 Power Plant题目大意：T组数据，给定一幅带权图(n;m), 然后给定k个点, 与图中存在有若干条边。每个点都要至少要和这k个点的一个点直接或间接相连, 问最少的距离是多少。标签：最小生成树思路：我们将那k个点就行缩点处理, 即把这k个点缩成一个点的编号, 跑一遍最小生成树即可。这样UVA的**输出方式。代码如下：123456789101112131415161718192">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-12T12:30:09.195Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="UVA6437 Power Plant题目大意：T组数据，给定一幅带权图(n;m), 然后给定k个点, 与图中存在有若干条边。每个点都要至少要和这k个点的一个点直接或间接相连, 问最少的距离是多少。标签：最小生成树思路：我们将那k个点就行缩点处理, 即把这k个点缩成一个点的编号, 跑一遍最小生成树即可。这样UVA的**输出方式。代码如下：123456789101112131415161718192">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-UVA6437 Power Plant" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/12/UVA6437 Power Plant/" class="article-date">
+  <time datetime="2019-02-12T12:30:09.039Z" itemprop="datePublished">2019-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UVA6437-Power-Plant"><a href="#UVA6437-Power-Plant" class="headerlink" title="UVA6437 Power Plant"></a>UVA6437 Power Plant</h1><h4 id="题目大意：T组数据，给定一幅带权图-n-m-然后给定k个点-与图中存在有若干条边。每个点都要至少要和这k个点的一个点直接或间接相连-问最少的距离是多少。"><a href="#题目大意：T组数据，给定一幅带权图-n-m-然后给定k个点-与图中存在有若干条边。每个点都要至少要和这k个点的一个点直接或间接相连-问最少的距离是多少。" class="headerlink" title="题目大意：T组数据，给定一幅带权图(n;m), 然后给定k个点, 与图中存在有若干条边。每个点都要至少要和这k个点的一个点直接或间接相连, 问最少的距离是多少。"></a>题目大意：T组数据，给定一幅带权图(n;m), 然后给定k个点, 与图中存在有若干条边。每个点都要至少要和这k个点的一个点直接或间接相连, 问最少的距离是多少。</h4><h5 id="标签：最小生成树"><a href="#标签：最小生成树" class="headerlink" title="标签：最小生成树"></a>标签：最小生成树</h5><h4 id="思路：我们将那k个点就行缩点处理-即把这k个点缩成一个点的编号-跑一遍最小生成树即可。这样UVA的-输出方式。"><a href="#思路：我们将那k个点就行缩点处理-即把这k个点缩成一个点的编号-跑一遍最小生成树即可。这样UVA的-输出方式。" class="headerlink" title="思路：我们将那k个点就行缩点处理, 即把这k个点缩成一个点的编号, 跑一遍最小生成树即可。这样UVA的**输出方式。"></a>思路：我们将那k个点就行缩点处理, 即把这k个点缩成一个点的编号, 跑一遍最小生成树即可。这样UVA的**输出方式。</h4><h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> T,n,m,k,ans,cnt;</span><br><span class="line"><span class="keyword">int</span> pd[<span class="number">400000</span>],f[<span class="number">400000</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y,w;</span><br><span class="line">&#125;e[<span class="number">400000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getf</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> f[x]==x?x:f[x]=getf(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(edge e,edge b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> e.w&lt;b.w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> h=<span class="number">1</span>;h&lt;=T;++h)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;++i) f[i]=i;</span><br><span class="line">		<span class="built_in">memset</span>(pd,<span class="number">0</span>,<span class="keyword">sizeof</span>(pd));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x),pd[x]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;e[i].x,&amp;e[i].y,&amp;e[i].w);</span><br><span class="line">			<span class="keyword">if</span>(pd[e[i].x]) e[i].x=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(pd[e[i].y]) e[i].y=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		sort(e+<span class="number">1</span>,e+m+<span class="number">1</span>,cmp);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">			<span class="keyword">int</span> fx=getf(e[i].x),fy=getf(e[i].y);</span><br><span class="line">			<span class="keyword">if</span>(fx==fy) <span class="keyword">continue</span>;</span><br><span class="line">			f[fx]=fy;ans+=e[i].w;</span><br><span class="line">			<span class="keyword">if</span>(++cnt==n) <span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Case #%d: %d\n"</span>,h,ans);ans=<span class="number">0</span>;cnt=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/12/UVA6437 Power Plant/" data-id="cjs5wlbgg0008dkub4d4g4nk9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/02/12/UVA10369 Arctic Network/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/12/BZOJ3033 太鼓达人/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/14/[IOI2008]Island/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA10369 Arctic Network/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA6437 Power Plant/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/BZOJ3033 太鼓达人/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/UVA1151 Buy or Build/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
