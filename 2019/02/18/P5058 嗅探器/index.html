@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="P5058 嗅探器题目大意：有一个n个点的图，在给定（a，b），问（a，b）之间能把他们两个点隔开的编号最小的点。思路：对于每个点，如果不是割点肯定没用，如果是割点也不一定有用，我们观察到（自行画图），以a为根的搜索树，如果割点中的子树包含b的话，就可以将他们隔开。所以我们就可以跑一遍tarjan，跑的时候判断一下即可。注意：是单个子树并非所有子节点！代码如下：123456789101112131">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/02/18/P5058 嗅探器/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="P5058 嗅探器题目大意：有一个n个点的图，在给定（a，b），问（a，b）之间能把他们两个点隔开的编号最小的点。思路：对于每个点，如果不是割点肯定没用，如果是割点也不一定有用，我们观察到（自行画图），以a为根的搜索树，如果割点中的子树包含b的话，就可以将他们隔开。所以我们就可以跑一遍tarjan，跑的时候判断一下即可。注意：是单个子树并非所有子节点！代码如下：123456789101112131">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-18T12:47:43.556Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="P5058 嗅探器题目大意：有一个n个点的图，在给定（a，b），问（a，b）之间能把他们两个点隔开的编号最小的点。思路：对于每个点，如果不是割点肯定没用，如果是割点也不一定有用，我们观察到（自行画图），以a为根的搜索树，如果割点中的子树包含b的话，就可以将他们隔开。所以我们就可以跑一遍tarjan，跑的时候判断一下即可。注意：是单个子树并非所有子节点！代码如下：123456789101112131">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-P5058 嗅探器" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/18/P5058 嗅探器/" class="article-date">
+  <time datetime="2019-02-18T12:47:43.411Z" itemprop="datePublished">2019-02-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="P5058-嗅探器"><a href="#P5058-嗅探器" class="headerlink" title="P5058 嗅探器"></a>P5058 嗅探器</h1><h4 id="题目大意：有一个n个点的图，在给定（a，b），问（a，b）之间能把他们两个点隔开的编号最小的点。"><a href="#题目大意：有一个n个点的图，在给定（a，b），问（a，b）之间能把他们两个点隔开的编号最小的点。" class="headerlink" title="题目大意：有一个n个点的图，在给定（a，b），问（a，b）之间能把他们两个点隔开的编号最小的点。"></a>题目大意：有一个n个点的图，在给定（a，b），问（a，b）之间能把他们两个点隔开的编号最小的点。</h4><h4 id="思路：对于每个点，如果不是割点肯定没用，如果是割点也不一定有用，我们观察到（自行画图），以a为根的搜索树，如果割点中的子树包含b的话，就可以将他们隔开。所以我们就可以跑一遍tarjan，跑的时候判断一下即可。注意：是单个子树并非所有子节点！"><a href="#思路：对于每个点，如果不是割点肯定没用，如果是割点也不一定有用，我们观察到（自行画图），以a为根的搜索树，如果割点中的子树包含b的话，就可以将他们隔开。所以我们就可以跑一遍tarjan，跑的时候判断一下即可。注意：是单个子树并非所有子节点！" class="headerlink" title="思路：对于每个点，如果不是割点肯定没用，如果是割点也不一定有用，我们观察到（自行画图），以a为根的搜索树，如果割点中的子树包含b的话，就可以将他们隔开。所以我们就可以跑一遍tarjan，跑的时候判断一下即可。注意：是单个子树并非所有子节点！"></a>思路：对于每个点，如果不是割点肯定没用，如果是割点也不一定有用，我们观察到（自行画图），以a为根的搜索树，如果割点中的子树包含b的话，就可以将他们隔开。所以我们就可以跑一遍tarjan，跑的时候判断一下即可。注意：是单个子树并非所有子节点！</h4><h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// luogu-judger-enable-o2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN=<span class="number">1e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxM=<span class="number">5e6</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,root;</span><br><span class="line"><span class="keyword">int</span> last[MaxN],tot,las[MaxN],h;</span><br><span class="line"><span class="keyword">int</span> dfn[MaxN],low[MaxN],cnt;</span><br><span class="line"><span class="keyword">int</span> pp[MaxN],xx,yy;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to,next;</span><br><span class="line">&#125;e[MaxM*<span class="number">4</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].to=y;</span><br><span class="line">    e[tot].next=last[x];</span><br><span class="line">    last[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flg=<span class="number">0</span>,pdd=<span class="number">0</span>;</span><br><span class="line">    dfn[x]=low[x]=++cnt;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=last[x];i;i=e[i].next)&#123;</span><br><span class="line">        <span class="keyword">int</span> u=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[u])&#123;</span><br><span class="line">            pp[x]=<span class="number">0</span>;<span class="comment">//是单棵子树，所有每棵子树要赋0</span></span><br><span class="line">            tarjan(u);</span><br><span class="line">            low[x]=min(low[x],low[u]);</span><br><span class="line">            pp[x]|=pp[u];</span><br><span class="line">            <span class="keyword">if</span>(pp[x]==<span class="number">1</span>||x==xx) pdd=<span class="number">1</span>;<span class="comment">//注意x==xx</span></span><br><span class="line">            <span class="keyword">if</span>(low[u]&gt;=dfn[x])&#123;</span><br><span class="line">                ++flg;</span><br><span class="line">                <span class="keyword">if</span>((x!=root||flg&gt;<span class="number">1</span>)&amp;&amp;pp[x]) las[x]=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        low[x]=min(low[x],dfn[u]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(pdd==<span class="number">1</span>) pp[x]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">0</span>&amp;&amp;y==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(x==y) <span class="keyword">continue</span>;</span><br><span class="line">        add_edge(x,y);add_edge(y,x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;xx,&amp;yy);</span><br><span class="line">    pp[xx]=<span class="number">1</span>;tarjan(yy);h=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) </span><br><span class="line">        <span class="keyword">if</span>(las[i]&amp;&amp;i!=xx&amp;&amp;i!=yy)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i);</span><br><span class="line">            h=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span>(h==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">"No solution"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/18/P5058 嗅探器/" data-id="cjsac7lva0003poube9edjiv5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/02/18/P2860 冗余路径Redundant Paths/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/18/P5058 嗅探器/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/P2860 冗余路径Redundant Paths/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/P4821 生成树/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/P3403 跳楼机/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/18/P2411 白银莲花池/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
